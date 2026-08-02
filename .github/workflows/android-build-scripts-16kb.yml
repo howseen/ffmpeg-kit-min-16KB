@@ -49,7 +49,10 @@ jobs:
       - name: print options
         run: ./android.sh --help
       - name: run the build script
-        run: ./android.sh --lts --enable-gpl --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64 --no-ffmpeg-kit-protocols
+        run: ./android.sh --lts --enable-gpl --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64
+      - name: Verify SAF files
+        run: |
+          grep -R "ff_saf_protocol" src/ffmpeg
       - name: prepare and upload main aar
         run: |
           AAR_PATH=$(find prebuilt -type f -name 'ffmpeg-kit.aar')
@@ -93,7 +96,10 @@ jobs:
       - name: print options
         run: ./android.sh --help
       - name: run the build script
-        run: ./android.sh --lts --enable-gpl --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64 --no-ffmpeg-kit-protocols
+        run: ./android.sh --lts --enable-gpl --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64
+      - name: Verify SAF files
+        run: |
+         grep -R "ff_saf_protocol" src/ffmpeg
       - name: prepare and upload lts aar
         run: |
           AAR_PATH=$(find prebuilt -type f -name 'ffmpeg-kit.aar')
