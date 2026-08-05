@@ -49,7 +49,7 @@ jobs:
       - name: print options
         run: ./android.sh --help
       - name: run the build script
-        run: ./android.sh --lts --enable-gpl --enable-x264 --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64
+        run: ./android.sh --enable-gpl --enable-x264 --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64
       - name: Verify SAF files
         run: |
           grep -R "ff_saf_protocol" src/ffmpeg
