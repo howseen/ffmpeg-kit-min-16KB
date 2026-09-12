@@ -50,6 +50,15 @@ jobs:
         run: ./android.sh --help
       - name: run the build script
         run: ./android.sh --enable-gpl --enable-x264 --disable-x86 --disable-x86-64
+      - name: Upload build.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-build-log
+          path: |
+            **/build.log
+            **/*.log
+          if-no-files-found: warn
       - name: Verify SAF files
         run: |
           grep -R "ff_saf_protocol" src/ffmpeg
@@ -97,6 +106,15 @@ jobs:
         run: ./android.sh --help
       - name: run the build script
         run: ./android.sh --lts --enable-gpl --enable-x264 --disable-x86 --disable-x86-64
+      - name: Upload build.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-build-log
+          path: |
+            **/build.log
+            **/*.log
+          if-no-files-found: warn
       - name: Verify SAF files
         run: |
          grep -R "ff_saf_protocol" src/ffmpeg
